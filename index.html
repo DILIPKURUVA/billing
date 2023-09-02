@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> onlinebill for shopping</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+</head> 
+<body>
+    <center>
+    <h1>creating a billing for onlinestore</h1>
+    <table>
+    <tr>
+        <td>
+        <label for="product">product :</label></td>
+        <td>
+        <input type="text" id="product"/></td>
+        </tr>
+        <tr>
+        <td>
+            <label for="quantity">quantity :</label></td>
+        <td>
+            <input type="number" id="quantity"/></td></tr>
+        <tr><td>
+            <label for="price" >price :</label></td>
+        <td><input type="number" id="price"/></td></tr>
+        <td colspan="2">
+        <button onclick="additem()">additem</button> </td>
+    </table>
+    <table id="billtable">
+        <thead>
+        <tr>
+            <th>product</th>
+            <th>quantity</th>
+            <th>price</th>
+            <th>total</th></tr></thead>
+        <tbody id="billbody"></tbody>
+        </table>
+    <h2>total bill:<span id="totalamount()"></span></h2></center>
+</body>
+    <script>
+    let billitems=[];
+        
+        function additem(){
+            
+            const product=document.getElementById("product").value;
+            const quantity=parseInt(document.getElementById("quantity").value);
+            const price=parseFloat(document.getElementById("price").value);
+            
+            if(product &&quantity &&price){
+                const total=quantity*price;
+                const item=(product,quantity,price,total);
+                billitems.push(item);
+                
+                displaybillitems();
+                calculatetotalamount();
+                
+                
+                document.getElementById("product").value="";
+                document.getElementById("quantity").value="";
+                document.getElementById("price").value="";
+            }
+        }
+        function calculatetotalamount(){
+            let totalamount()=0;
+            for(let i=0;i<billitems.length;i++){
+                totalamount +=billitems[i].total;
+                
+            }
+            document.getElementById("totalamount()").textContent=totalamount().tofixed(2);
+        }
+    
+    </script>
+</html>
